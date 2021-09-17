@@ -8,16 +8,22 @@ import PizzaForm from "./components/PizzaForm";
 import Home from "./components/Home";
 
 const AppWrapper = styled.div`
+  font-family: "Cedarville Cursive", cursive;
   nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: green;
   }
+  nav h1 {
+    font-size: 4rem;
+  }
   nav a {
     text-decoration: none;
+    color: black;
+    font-size: 2rem;
     background-color: red;
-    padding: 0.5%;
+    padding: 0.5% 1%;
     border-radius: 15%;
   }
 `;
@@ -101,7 +107,7 @@ const App = () => {
   return (
     <AppWrapper>
       <nav>
-        <h1>Lambda Eats</h1>
+        <h1>Mama Mia's Pizzeria</h1>
         <Link to="/">Home</Link>
       </nav>
       <Route exact path="/">
