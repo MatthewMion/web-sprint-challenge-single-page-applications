@@ -32,9 +32,7 @@ const App = () => {
   const getOrders = () => {
     axios
       .get(`https://reqres.in/api/orders`)
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((err) => console.error(err));
   };
   const postNewOrder = (newOrder) => {
@@ -51,7 +49,6 @@ const App = () => {
     console.log(orders);
   };
 
-  //double check
   const validate = (name, value) => {
     yup
       .reach(formSchema, name)
@@ -82,7 +79,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
     formSchema.isValid(formValues).then((valid) => setDisabled(!valid));
   }, [formValues]);
 

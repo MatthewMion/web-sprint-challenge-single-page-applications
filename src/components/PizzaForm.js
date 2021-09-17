@@ -105,7 +105,11 @@ export default function PizzaForm(props) {
             />
           </label>
         </div>
-        <button className="orderSubmitBtn" disabled={disabled}>
+        <button
+          id="order-button"
+          className="orderSubmitBtn"
+          disabled={disabled}
+        >
           Submit Your Order
         </button>
       </form>
