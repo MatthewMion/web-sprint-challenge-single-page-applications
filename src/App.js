@@ -18,8 +18,59 @@ const initialFormErrors = {
   name: "",
   size: "",
 };
+const initialOrder = [];
+const initialDisabled = true;
 
 const App = () => {
+  const [orders, setOrders] = useState(initialOrder);
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(initialDisabled);
+
+  //post new order
+
+  const postNewOrder = (newOrder) => {
+    axios
+      .post(`https://reqres.in/api/orders`, newOrder)
+      .then((res) => {
+        setOrders([res.data, ...orders]);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.error(err);
+        setFormValues(initialFormValues);
+      });
+    console.log(orders);
+  };
+
+  //double check
+  const validate = (name, value) => {
+    yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: "" }))
+      .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
+  };
+
+  const inputChange = (name, value) => {
+    validate(name, value);
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const formSubmit = () => {
+    const newOrder = {
+      name: formValues.name.trim(),
+      size: formValues.size,
+      topping1: formValues.topping1,
+      topping2: formValues.topping2,
+      special: formValues.special,
+    };
+    postNewOrder(newOrder);
+  };
+
   return (
     <div>
       <nav>
