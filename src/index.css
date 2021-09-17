@@ -23,6 +23,12 @@ nav {
   text-align: center;
   padding: 5% 0%;
   width: 100%;
+  background-image: url(./Assets/Pizza.jpg);
+}
+.home-header h2 {
+  background-color: green;
+  padding: 1%;
+  border-radius: 10px;
 }
 .container {
   display: flex;
@@ -31,4 +37,8 @@ nav {
   text-align: center;
   width: 100%;
   border: solid red 3px;
+}
+
+#pizza-form {
+  border: solid green 3px;
 }
