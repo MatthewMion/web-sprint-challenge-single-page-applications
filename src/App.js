@@ -2,9 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
+import styled from "styled-components";
 import formSchema from "./validation/FormSchema";
 import PizzaForm from "./components/PizzaForm";
 import Home from "./components/Home";
+
+const AppWrapper = styled.div`
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: green;
+  }
+  nav a {
+    text-decoration: none;
+    background-color: red;
+    padding: 0.5%;
+    border-radius: 15%;
+  }
+`;
 
 const initialFormValues = {
   name: "",
@@ -39,6 +55,7 @@ const App = () => {
     axios
       .post(`https://reqres.in/api/orders`, newOrder)
       .then((res) => {
+        console.log(res.data);
         setOrders([res.data, ...orders]);
         setFormValues(initialFormValues);
       })
@@ -46,7 +63,6 @@ const App = () => {
         console.error(err);
         setFormValues(initialFormValues);
       });
-    console.log(orders);
   };
 
   const validate = (name, value) => {
@@ -83,7 +99,7 @@ const App = () => {
   }, [formValues]);
 
   return (
-    <div>
+    <AppWrapper>
       <nav>
         <h1>Lambda Eats</h1>
         <Link to="/">Home</Link>
@@ -100,7 +116,7 @@ const App = () => {
           disabled={disabled}
         />
       </Route>
-    </div>
+    </AppWrapper>
   );
 };
 export default App;

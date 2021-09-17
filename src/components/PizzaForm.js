@@ -1,4 +1,38 @@
 import React from "react";
+import styled from "styled-components";
+
+const ContainerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  border: solid red 3px;
+
+  #pizza-form {
+    display: flex;
+    flex-direction: column;
+    border: solid green 3px;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+  #size-dropdown {
+    display: block;
+  }
+  .checkboxes {
+    align-items: flex-start;
+  }
+  .orderSubmitBtn {
+    width: 50%;
+  }
+`;
 
 export default function PizzaForm(props) {
   const { values, submit, change, disabled, errors } = props;
@@ -15,7 +49,7 @@ export default function PizzaForm(props) {
   };
 
   return (
-    <div className="container">
+    <ContainerWrapper>
       <h2>Build Your Own Pizza</h2>
       <div className="errors">
         <div>{errors.name}</div>
@@ -113,6 +147,6 @@ export default function PizzaForm(props) {
           Submit Your Order
         </button>
       </form>
-    </div>
+    </ContainerWrapper>
   );
 }
