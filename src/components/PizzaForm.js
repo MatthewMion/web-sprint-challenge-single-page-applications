@@ -8,13 +8,20 @@ const ContainerWrapper = styled.div`
   text-align: center;
   width: 100%;
   border: solid red 3px;
+  text-shadow: 2px 2px #ff0000;
 
+  h2 {
+    font-size: 2.5rem;
+  }
   #pizza-form {
     display: flex;
     flex-direction: column;
-    border: solid green 3px;
+    padding: 2%;
+    border: solid green 5px;
+    margin: 5%;
     align-items: center;
     row-gap: 20px;
+    font-size: 2rem;
   }
 
   .form-group {
@@ -26,10 +33,24 @@ const ContainerWrapper = styled.div`
   #size-dropdown {
     display: block;
   }
+  input.checkbox {
+    width: 30px;
+    height: 30px;
+  }
   .checkboxes {
     align-items: flex-start;
+    font-size: 2.5rem;
+  }
+  .instructions {
+    font-size: 2rem;
+    width: 90%;
+  }
+  #special-text {
+    display: block;
+    width: 100%;
   }
   .orderSubmitBtn {
+    align-items: center;
     width: 50%;
   }
 `;
@@ -67,7 +88,7 @@ export default function PizzaForm(props) {
       <form id="pizza-form" onSubmit={onSubmit}>
         <div className="form-group inputs">
           <label>
-            Name:
+            Name:{"  "}
             <input
               id="name-input"
               type="text"
@@ -94,6 +115,7 @@ export default function PizzaForm(props) {
         <div className="form-group checkboxes">
           <label>
             <input
+              className="checkbox"
               type="checkbox"
               value={values.pepperoni}
               name="pepperoni"
@@ -103,6 +125,7 @@ export default function PizzaForm(props) {
           </label>
           <label>
             <input
+              className="checkbox"
               type="checkbox"
               value={values.sausage}
               name="sausage"
@@ -112,6 +135,7 @@ export default function PizzaForm(props) {
           </label>
           <label>
             <input
+              className="checkbox"
               type="checkbox"
               value={values.peppers}
               name="peppers"
@@ -121,6 +145,7 @@ export default function PizzaForm(props) {
           </label>
           <label>
             <input
+              className="checkbox"
               type="checkbox"
               value={values.meatballs}
               name="meatballs"
@@ -128,7 +153,7 @@ export default function PizzaForm(props) {
             />
             A'Spicy A'meat'a ball
           </label>
-          <label>
+          <label className="instructions">
             Special Instructions
             <input
               id="special-text"

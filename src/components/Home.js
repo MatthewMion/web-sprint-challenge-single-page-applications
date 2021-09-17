@@ -15,6 +15,9 @@ const HeaderWrapper = styled.div`
   background-image: url(${bgImg});
   background-repeat: no-repeat;
   background-size: cover;
+  h2 {
+    text-shadow: 2px 2px #ff0000;
+  }
   button {
     font-family: "Cedarville Cursive", cursive;
     padding: 2%;
@@ -22,6 +25,7 @@ const HeaderWrapper = styled.div`
     font-weight: bold;
     background-color: red;
     border-radius: 15%;
+    box-shadow: 5px 5px #888888;
   }
 `;
 export default function Home() {

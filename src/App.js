@@ -14,9 +14,11 @@ const AppWrapper = styled.div`
     justify-content: space-around;
     align-items: center;
     background-color: green;
+    border-bottom: solid black 4px;
   }
   nav h1 {
     font-size: 4rem;
+    text-shadow: 2px 2px #ff0000;
   }
   nav a {
     text-decoration: none;
@@ -25,6 +27,7 @@ const AppWrapper = styled.div`
     background-color: red;
     padding: 0.5% 1%;
     border-radius: 15%;
+    box-shadow: 5px 5px #888888;
   }
 `;
 
