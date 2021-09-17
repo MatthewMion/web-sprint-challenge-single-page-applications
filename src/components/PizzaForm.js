@@ -13,6 +13,9 @@ const ContainerWrapper = styled.div`
   h2 {
     font-size: 2.5rem;
   }
+  .errors {
+    font-size: 2rem;
+  }
   #pizza-form {
     display: flex;
     flex-direction: column;
@@ -31,7 +34,11 @@ const ContainerWrapper = styled.div`
     row-gap: 20px;
   }
   #size-dropdown {
-    display: block;
+    text-align: center;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
   }
   input.checkbox {
     width: 30px;
@@ -41,9 +48,11 @@ const ContainerWrapper = styled.div`
     align-items: flex-start;
     font-size: 2.5rem;
   }
+
   .instructions {
     font-size: 2rem;
     width: 90%;
+    align-items: center;z
   }
   #special-text {
     display: block;
@@ -81,10 +90,6 @@ export default function PizzaForm(props) {
         <div>{errors.meatballs}</div>
         <div>{errors.special}</div>
       </div>
-      {/* 
-        <h3>Choice of Sauce</h3>
-        <h3>Add Toppings</h3>
-        <h3>Special Instructions</h3> */}
       <form id="pizza-form" onSubmit={onSubmit}>
         <div className="form-group inputs">
           <label>
@@ -97,7 +102,7 @@ export default function PizzaForm(props) {
               name="name"
             />
           </label>
-          <label>
+          <label className="dropdown">
             Choice of Size
             <select
               id="size-dropdown"
@@ -153,6 +158,7 @@ export default function PizzaForm(props) {
             />
             A'Spicy A'meat'a ball
           </label>
+
           <label className="instructions">
             Special Instructions
             <input

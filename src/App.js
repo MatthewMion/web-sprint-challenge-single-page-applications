@@ -11,10 +11,11 @@ const AppWrapper = styled.div`
   font-family: "Cedarville Cursive", cursive;
   nav {
     display: flex;
+    width: 100%;
     justify-content: space-around;
     align-items: center;
     background-color: green;
-    border-bottom: solid black 4px;
+    border: solid black 4px;
   }
   nav h1 {
     font-size: 4rem;
