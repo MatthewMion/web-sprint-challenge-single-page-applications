@@ -40,5 +40,23 @@ nav {
 }
 
 #pizza-form {
+  display: flex;
+  flex-direction: column;
   border: solid green 3px;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#size-dropdown {
+  display: block;
+}
+.checkboxes {
+  align-items: flex-start;
+}
+.orderSubmitBtn {
+  width: 50%;
 }

@@ -5,13 +5,14 @@ import * as yup from "yup";
 import formSchema from "./validation/FormSchema";
 import PizzaForm from "./components/PizzaForm";
 import Home from "./components/Home";
-import { useHistory } from "react-router";
 
 const initialFormValues = {
   name: "",
   size: "",
-  topping1: false,
-  topping2: false,
+  pepperoni: false,
+  sausage: false,
+  peppers: false,
+  meatballs: false,
   special: "",
 };
 const initialFormErrors = {
@@ -28,7 +29,14 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   //post new order
-
+  const getOrders = () => {
+    axios
+      .get(`https://reqres.in/api/orders`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.error(err));
+  };
   const postNewOrder = (newOrder) => {
     axios
       .post(`https://reqres.in/api/orders`, newOrder)
@@ -64,12 +72,19 @@ const App = () => {
     const newOrder = {
       name: formValues.name.trim(),
       size: formValues.size,
-      topping1: formValues.topping1,
-      topping2: formValues.topping2,
+      pepperoni: formValues.pepperoni,
+      sausage: formValues.sausage,
+      peppers: formValues.peppers,
+      meatballs: formValues.meatballs,
       special: formValues.special,
     };
     postNewOrder(newOrder);
   };
+
+  useEffect(() => {
+    // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
+    formSchema.isValid(formValues).then((valid) => setDisabled(!valid));
+  }, [formValues]);
 
   return (
     <div>
@@ -81,7 +96,13 @@ const App = () => {
         <Home />
       </Route>
       <Route exact path="/pizza">
-        <PizzaForm />
+        <PizzaForm
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+          errors={formErrors}
+          disabled={disabled}
+        />
       </Route>
     </div>
   );
