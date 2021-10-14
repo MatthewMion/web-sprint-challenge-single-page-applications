@@ -52,7 +52,7 @@ const ContainerWrapper = styled.div`
   .instructions {
     font-size: 2rem;
     width: 90%;
-    align-items: center;z
+    align-items: center;
   }
   #special-text {
     display: block;
